@@ -1,0 +1,12 @@
+version: "3.8"
+
+services: 
+  smart-brain-api:
+    container_name: backend
+    build: ./
+    command: npm start
+    working_dir: /Users/angelivanov/smart-brain-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/Users/angelivanov/smart-brain-api

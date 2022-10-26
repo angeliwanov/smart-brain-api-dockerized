@@ -6,7 +6,21 @@ services:
     build: ./
     command: npm start
     working_dir: /Users/angelivanov/smart-brain-api
+    environment:
+      POSTGRES_URI: postgres://angel:secret@postgres:5432/smart-brain-docker
+    links:
+      - postgres
     ports:
       - "8000:8000"
     volumes:
       - ./:/Users/angelivanov/smart-brain-api
+
+  postgres:
+    environment:
+      POSTGRES_USER: angel
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: smart-brain-docker
+      POSTGRES_HOST: postgres
+    build: ./postgres
+    ports:
+      - "5432:5432"

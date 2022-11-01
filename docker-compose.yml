@@ -8,8 +8,10 @@ services:
     working_dir: /Users/angelivanov/smart-brain-api
     environment:
       POSTGRES_URI: postgres://angel:secret@postgres:5432/smart-brain-docker
+      REDIS_URI: redis://redis:6379
     links:
       - postgres
+      - redis
     ports:
       - "8000:8000"
     volumes:
@@ -24,3 +26,8 @@ services:
     build: ./postgres
     ports:
       - "5432:5432"
+
+  redis:  
+    image: redis
+    ports:
+      - "6379:6379"
